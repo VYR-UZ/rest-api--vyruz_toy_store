@@ -5,6 +5,9 @@ import indexRoutes from './routes/index.routes.js';
 //Ejecutar express
 const app = express();
 
+//interpresa valores en formato json
+app.use(express.json());
+
 //endpoint
 app.use(toysRoutes);
 app.use(indexRoutes);
