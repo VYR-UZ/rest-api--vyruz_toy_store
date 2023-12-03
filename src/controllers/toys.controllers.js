@@ -1,6 +1,25 @@
+import { request, response } from "express";
 import { pool } from "../db.js";
 
-export const getToys = (request, response) => response.send('Obteniendo juguetes');
+export const getToys = async (request, response) => {
+    const [filas] = await pool.query('SELECT * FROM toys');
+    response.json(filas);
+};
+
+export const getToy = async (request, response) => {
+    const [filas] = await pool.query('SELECT * FROM toys WHERE ID = ?', [request.params.id]);
+
+    //Si no existe el id
+    if (filas.length <= 0) {
+        return response.status(404).json(
+            {
+                message: 'El juguete no existe'
+            }
+        );
+    };
+
+    response.json(filas[0]);
+};
 
 //Es una consulta asincrona
 export const createToys = async (request, response) => {

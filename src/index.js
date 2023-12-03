@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 //endpoint
-app.use(toysRoutes);
+app.use('/api', toysRoutes);
 app.use(indexRoutes);
 
 app.listen(5000, () => {

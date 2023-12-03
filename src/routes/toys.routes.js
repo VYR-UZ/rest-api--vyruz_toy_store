@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { getToys, createToys, updateToys, deleteToys } from '../controllers/toys.controllers.js';
+import { getToys, getToy, createToys, updateToys, deleteToys } from '../controllers/toys.controllers.js';
 
 //grupo de rutas
 const router = Router();
 
 router.get('/toys', getToys);
+router.get('/toys/:id', getToy);
 
 router.post('/toys', createToys);
 
